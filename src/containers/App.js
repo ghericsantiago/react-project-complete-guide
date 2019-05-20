@@ -5,14 +5,6 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
 
-  // constructor( props ) {
-  //   super( props );
-  // }
-
-  // static getDerivedStateFromProps( props, state ){
-  //   return state;
-  // }
-
   // Reserve Property
   state = {
     persons: [
@@ -21,6 +13,20 @@ class App extends Component {
       { id: 3, name: 'Anne', age: 24 },
     ],
     showPersons: false
+  }
+
+
+  componentDidMount(){
+    console.log('[App.js] componentDidMount');
+  }
+
+  shouldComponentUpdate(){
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+  }
+  
+  componentWillUpdate(){
+    console.log('[App.js] componentWillUpdate');
   }
 
   togglePersonHandler = () => {
