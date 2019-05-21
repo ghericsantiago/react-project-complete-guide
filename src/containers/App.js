@@ -10,9 +10,17 @@ class App extends Component {
     persons: [
       { id: 1, name: 'Gheric', age: 29 },
       { id: 2, name: 'Kath', age: 25 },
-      { id: 3, name: 'Anne', age: 24 },
+      { id: 3, name: 'Anne', age: 24 }
     ],
-    showPersons: false
+    showPersons: false,
+    changeCounter: 0,
+    isAuthenticated: false
+  }
+
+  loginHandler = () => {
+    this.setState({
+      isAuthenticated: true
+    })
   }
 
 
@@ -46,8 +54,11 @@ class App extends Component {
       return person;
     });
 
-    this.setState({
-      persons
+    this.setState( ( prevState, props ) => {
+      return {
+        persons,
+        changeCounter: prevState.changeCounter + 1
+      };
     });
   }
 
@@ -59,11 +70,14 @@ class App extends Component {
 
   render() {
 
-    let persons = this.state.showPersons && <Persons persons={ this.state.persons } clicked={ this.deletePersonHandler } changed={ this.switchNameHandler } />
+    let persons = this.state.showPersons && <Persons persons={ this.state.persons } clicked={ this.deletePersonHandler } changed={ this.switchNameHandler } auth={ this.state.isAuthenticated } />
     
     return (
       <div className={ classes.App }>
-        <Cockpit title={ this.props.title } clicked={ this.togglePersonHandler } />
+        <Cockpit 
+        title={ this.props.title } 
+        clicked={ this.togglePersonHandler }
+        login={ this.loginHandler } />
         { persons }
       </div>
     );
