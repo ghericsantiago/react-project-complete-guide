@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classes from './Person.css';
 import withClass from '../../../hoc/withClass';
 import Aux from '../../../hoc/Aux';
+import AuthContext from '../../../context/auth-context';
 
 class Person extends Component {
 
@@ -19,7 +20,9 @@ class Person extends Component {
         let props = this.props;
         return (
             <Aux>
-                { this.props.auth ? <p>Authenticated</p>: <p>Please Login</p> }
+                <AuthContext.Consumer>
+                    { context =>  context.authenticated ? <p>Authenticated</p>: <p>Please Login</p>  }
+                </AuthContext.Consumer>
                 <p>I'm { props.name } and I am { props.age } years old.</p>
                 <p>{ props.children }</p>
                 <input ref={ this.inputElementRef } value={ props.name } onChange={ props.changed }></input>

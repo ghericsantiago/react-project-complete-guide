@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Person from './Person/Person';
 
-
 class Persons extends Component {
 
     state = {
@@ -43,9 +42,8 @@ class Persons extends Component {
                 age={ person.age }
                 click={ () => props.clicked( index ) }
                 changed={ event => props.changed( event, person.id ) }
-                auth={ props.auth }
             />
-        });   
+        });
     }
 }
 
