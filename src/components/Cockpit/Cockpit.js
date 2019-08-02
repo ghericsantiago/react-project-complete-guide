@@ -10,7 +10,7 @@ const Cockpit = props => {
     useEffect( () => {
         console.log('[Cockpit.js] useEffect');
         toggleButtonRef.current.click();
-    }, [] )
+    } )
 
     let assignedClasses = [ classes.red, classes.bold ];
 

@@ -3,6 +3,7 @@ import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import AuthContext from '../context/auth-context';
+import Aux from '../hoc/Aux';
 
 class App extends Component {
 
@@ -74,14 +75,11 @@ class App extends Component {
     let persons = this.state.showPersons && <Persons persons={ this.state.persons } clicked={ this.deletePersonHandler } changed={ this.switchNameHandler } auth={ this.state.isAuthenticated } />
     
     return (
-      <div className={ classes.App }>
-        <AuthContext.Provider value={{ authenticated: this.state.isAuthenticated, login: this.loginHandler }}>
-          <Cockpit 
-          title={ this.props.title } 
-          clicked={ this.togglePersonHandler } />
-          { persons }
-        </AuthContext.Provider>
+      <div>
+        <div></div>
+        <div></div>
       </div>
+      
     );
   }
 }
